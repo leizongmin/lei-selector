@@ -152,6 +152,19 @@ class LeiSelector extends Selector {
     return this;
   }
 
+  on(type, fn) {
+    return this.each(el => el.addEventListener(type, (event) => {
+      fn.call(el, event);
+    }));
+  }
+
+  once(type, fn) {
+    this.on(type, fn);
+    return this.each(el => el.addEventListener(type, () => {
+      el.removeEventListener(type, fn);
+    }));
+  }
+
 }
 
 module.exports = LeiSelector;
@@ -192,7 +205,7 @@ class Selector {
       this.fromNodeList(query);
     } else if (query === null) {
       this.length = 0;
-    } else if (query instanceof query) {
+    } else if (query instanceof Selector) {
       this.fromSelector(query);
     } else {
       throw new Error(`new Selector(query): invalid type of query, must be string, Element or NodeList`);

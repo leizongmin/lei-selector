@@ -39,6 +39,17 @@
     }
   }
 
+  $('ul li').on('click', function (...args) {
+    let i = Number($(this).data('counter'));
+    if (isNaN(i)) i = 0;
+    i += 1;
+    $(this).data('counter', i).text('clicked:' + i);
+  });
+
+  $('ul li').once('click', function (...args) {
+    $(this).text($(this).text() + ':once');
+  });
+
   setInterval(() => {
     $('ul li').show();
     for (let i = 0; i < 100; i++) {

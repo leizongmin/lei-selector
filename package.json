@@ -1,6 +1,6 @@
 {
   "name": "lei-selector",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "基于HTML5的类jQuery选择器，轻量且易于扩展",
   "main": "lib/index.js",
   "directories": {
@@ -11,7 +11,8 @@
     "browserify": "browserify -e lib/index.js -o dist/lei-selector.js -s lei-selector",
     "minify": "uglifyjs dist/lei-selector.js --source-map --compress --output dist/lei-selector.min.js",
     "build": "npm run browserify && npm run minify",
-    "lint": "eslint lib --fix"
+    "lint": "eslint lib --fix",
+    "prepublish": "npm run lint && npm run build"
   },
   "repository": {
     "type": "git",
