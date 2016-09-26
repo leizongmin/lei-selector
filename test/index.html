@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <title>测试 lei-selector</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1>测试</h1>
+    <ul>
+
+    </ul>
+  </body>
+</html>
+<script src="../dist/lei-selector.js"></script>
+<script>
+
+  function $(q) { return leiSelector.from(q) }
+
+  for (let i = 0; i < 100; i++) {
+    $('ul').append(`<li id="number-${ i }" data-number="${ i }" data-index${ i }="${ i }">Number = ${ i }</li>`);
+  }
+
+  $('ul')
+    .css('list-style', 'none')
+    .css('margin', 0)
+    .css('padding', 0);
+
+  for (let i = 0; i < 100; i++) {
+    $('ul').find(`#number-${ i }`).css({
+      backgroundColor: [ 'red', 'blue', 'yellow', 'black', 'cyan' ][i % 5],
+    });
+  }
+
+  for (let i = 0; i < 100; i++) {
+    if (i % 3 === 0) {
+      $('ul li').eq(i).css('text-align', 'center');
+    } else if (i %3 === 1) {
+      $('ul li').eq(i).css('text-align', 'right');
+    }
+  }
+
+  setInterval(() => {
+    $('ul li').show();
+    for (let i = 0; i < 100; i++) {
+      if (Date.now() % i === 0) {
+        $('ul li').eq(i).hide();
+      }
+    }
+  }, 1000);
+
+</script>
