@@ -1,4 +1,6 @@
 # lei-selector
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/leizongmin/lei-selector.svg)](https://greenkeeper.io/)
 基于HTML5的类jQuery选择器，轻量且易于扩展
 
 
